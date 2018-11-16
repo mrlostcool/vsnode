@@ -6,8 +6,6 @@ exports.index = function(req,res) {
 };
 
 exports.loginpost = function(req,res) {
-    //console.log(req.body.username);
-    console.log(req.body.password);
     
     user.getbyname(req.body.username,function(result) {
         //console.log(result);

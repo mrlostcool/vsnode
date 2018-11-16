@@ -5,7 +5,7 @@ var mysqlcnf = require('../conf/mysqlconf')
 
 var pool = mysql.createPool(mysqlcnf.mysql)
 
- var db = {};
+var db = {};
 
 //插入操作，注意使用异步返回查询结果
 /*

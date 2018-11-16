@@ -7,7 +7,10 @@ router.get('/', function(req, res, next) {
 });
 
 
-
+router.use('/login',function (req, res, next) {
+  console.log('Time:', Date.now())
+  next()
+});
 
 
 module.exports = router;
