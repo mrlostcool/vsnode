@@ -1,20 +1,24 @@
 var path = require('path');
-var db = require('../models/db');
+var user = require('../models/user')
 
 exports.index = function(req,res) {
     res.sendFile(path.join(__dirname, '../views/login.html'))
 };
 
 exports.loginpost = function(req,res) {
-    console.log(req.body.username);
+    //console.log(req.body.username);
     console.log(req.body.password);
-    let connection = db.connection();
-    let sql = "select * from users where username='"+req.body.username+"'";
-    console.log(sql);
-    db.query(connection,sql,function(result) {
-        console.log(result);
+    
+    user.getbyname(req.body.username,function(result) {
+        //console.log(result);
+        if (result.length == 0) {
+            console.log("empty reuslt")
+        }
+        else {
+            console.log(result[0].password);
+        }
+        
     });
     console.log("query end");
-    db.close(connection);
     res.send('post login page');
 };
