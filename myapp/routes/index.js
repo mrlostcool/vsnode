@@ -3,14 +3,14 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+  if (req.session.username) {
+    res.render('index', { title: 'Express' });
+  }
+  else {
+    res.redirect('/login')
+  }
+})
 
-
-router.use('/login',function (req, res, next) {
-  console.log('Time:', Date.now())
-  next()
-});
 
 
 module.exports = router;
