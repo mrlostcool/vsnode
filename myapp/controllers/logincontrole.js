@@ -21,11 +21,12 @@ exports.loginpost = function(req,res) {
         else {
             console.log(result[0].password);
             if (result[0].password != req.body.password) {
-                res.send('invalid username');
+                res.send('invalid password');
             }
             else {
                 req.session.username = req.body.username
-                res.redirect('/')
+                res.send('success');
+                //res.redirect('/');
             }
         }
         

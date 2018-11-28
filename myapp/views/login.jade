@@ -2,10 +2,33 @@ doctype html
 html(lang="en")
     head
         title login
+        script(src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js")
+        script(type="text/javascript").
+            function login() {
+                $.ajax({
+                    type: "POST",//方法类型
+                    dataType: "text",//预期服务器返回的数据类型
+                    url: "/login" ,//url
+                    data: $('#form1').serialize(),
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        if (result == "success") {
+                            //alert("SUCCESS");
+                            location.href = "/"
+                        }
+                        else{
+                            alert(result);
+                        }
+                    },
+                    error : function() {
+                        alert("异常！");
+                    }
+                });
+            }
     body
-        form(action='/login',method='post')
+        form(id='form1',onsubmit='return false',action='##',method='post')
             | username:
             input(type='text',name='username')
             | password:
             input(type='text',name='password') 
-            input(type='submit',value='submit')
+            input(type='button',value='submit',onclick='login()')
