@@ -3,7 +3,14 @@ var user = require('../models/user')
 
 exports.index = function(req,res) {
     //res.sendFile(path.join(__dirname, '../views/login.html'))
+    //res.set('charset', 'utf8');
+    //res.set("Content-type:application/pdf");
+    //res.set("Content-Disposition:attachment;filename='downloaded.pdf'");
+    //res.end('ok')
+    //res.header("Content-type","application/pdf");
+    //res.header("Content-Disposition","attachment;filename='downloaded.pdf'");
     res.render('login');
+    //res.send('success');
 };
 
 exports.loginpost = function(req,res) {

@@ -26,6 +26,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: {
     maxAge: 1000 * 60 * 3, // 设置 session 的有效时间，单位毫秒
+    domain:'127.0.0.1',
   },
 }))
 app.use(express.static(path.join(__dirname, 'public')));
